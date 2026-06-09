@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: nexem-tech
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node .output/server/index.mjs
+    envVars:
+      - key: NODE_ENV
+        value: production
