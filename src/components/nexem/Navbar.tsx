@@ -22,8 +22,8 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const links: { href: string; label: string }[] = [
-    { href: "#top", label: t("nav.home") },
+  const links: { href: string; label: string; onClick?: () => void }[] = [
+    { href: "#top", label: t("nav.home"), onClick: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
     { href: "#solutions", label: t("nav.services") },
   ];
   const govChildren = [
@@ -48,15 +48,25 @@ export function Navbar() {
         <nav
           className={`flex items-center justify-between transition-all duration-300 ease-out ${scrolled ? "h-16" : "h-20"}`}
         >
-          <a href="#top" className="group transition-all duration-300 hover:opacity-95">
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="group transition-all duration-300 hover:opacity-95"
+          >
             <NexemBrand size="nav" />
-          </a>
+          </button>
 
           <div className="hidden lg:flex items-center gap-7">
             {links.map((l) => (
               <a
                 key={l.label}
                 href={l.href}
+                onClick={(e) => {
+                  if (l.onClick) {
+                    e.preventDefault();
+                    l.onClick();
+                  }
+                }}
                 className="relative text-sm text-muted-foreground hover:text-foreground transition-all duration-300 ease-out after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-accent after:transition-all hover:after:w-full"
               >
                 {l.label}
@@ -159,7 +169,13 @@ export function Navbar() {
               <a
                 key={l.label}
                 href={l.href}
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  if (l.onClick) {
+                    e.preventDefault();
+                    l.onClick();
+                  }
+                  setOpen(false);
+                }}
                 className="px-3 py-3 rounded-xl text-sm font-medium hover:bg-accent/10 hover:text-accent transition"
               >
                 {l.label}
