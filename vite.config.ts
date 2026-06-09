@@ -9,7 +9,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 export default defineConfig({
   vite: {
     server: {
-      allowedHosts: ["nexem-tech.onrender.com"],
+      allowedHosts: ["nexem-tech.onrender.com", "www.nexem.cm"]
     },
   },
   tanstackStart: {
