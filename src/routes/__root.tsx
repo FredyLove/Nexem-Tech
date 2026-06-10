@@ -88,9 +88,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "Smart Solutions · Digital Innovation · Secure Technologies for Africa.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/nexem-icon.png" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/nexem-icon.png" },
     ],
     links: [
+      { rel: "icon", type: "image/png", href: "/nexem-icon.png" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
