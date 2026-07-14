@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/nexem/Navbar";
 import { Hero } from "@/components/nexem/Hero";
 import { Partners } from "@/components/nexem/Partners";
@@ -12,27 +11,7 @@ import { ScrollToTop } from "@/components/nexem/ScrollToTop";
 import { Realisations } from "@/components/nexem/Realisations";
 import { LanguageProvider } from "@/components/nexem/LanguageContext";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Nexem Technologies — Powering Africa's Digital Future" },
-      {
-        name: "description",
-        content:
-          "Nexem Technologies delivers smart identification, cybersecurity, digital transformation and IoT solutions for governments and enterprises across Africa.",
-      },
-      { property: "og:title", content: "Nexem Technologies — Powering Africa's Digital Future" },
-      {
-        property: "og:description",
-        content: "Smart Infrastructure · Digital Identity · Cybersecurity · Innovation for Africa.",
-      },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
-  component: Index,
-});
-
-function Index() {
+export default function App() {
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
